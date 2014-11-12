@@ -1,4 +1,4 @@
-package com.example.evan.tes3;
+package com.example.evan.hourglass;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
