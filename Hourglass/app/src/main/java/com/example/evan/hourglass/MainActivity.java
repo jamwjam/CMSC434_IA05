@@ -2,6 +2,7 @@ package com.example.evan.hourglass;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -16,6 +17,7 @@ import java.util.TimerTask;
 public class MainActivity extends Activity {
     private Handler _uiHandler = new Handler();
     private Timer _timer = new Timer();
+
     public void buttonOnClick(View view) {
         Intent act = null;
         if(view.getId() == R.id.buttonSetting)
@@ -30,6 +32,8 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        final SharedPreferences settings = getPreferences(0);
+
         setContentView(R.layout.activity_main);
 
         _timer.schedule(new TimerTask() {
@@ -39,8 +43,10 @@ public class MainActivity extends Activity {
                 _uiHandler.post(new Runnable(){
                     @Override
                     public void run(){
-                        View hourglass = findViewById(R.id.viewClockTwo);
-                        hourglass.invalidate();
+
+                        hourglass h = (hourglass)findViewById(R.id.viewClockTwo);
+                        h.setSettings(settings.getBoolean("twentyFour", true));
+                        h.invalidate();
                     }
                 });
 

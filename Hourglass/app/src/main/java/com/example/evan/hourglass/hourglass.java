@@ -1,5 +1,6 @@
 package com.example.evan.hourglass;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
@@ -10,6 +11,8 @@ import android.text.format.Time;
 
 public class hourglass extends View {
     private timeModel _timer;
+    private int mode;
+    boolean twentyFour;
     private Paint _brush = new Paint();
     public hourglass(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -19,6 +22,9 @@ public class hourglass extends View {
 
     }
 
+    public void  setSettings(boolean twentyFour){
+        this.twentyFour = twentyFour;
+    }
 
     public hourglass(Context context) {
         super(context);
@@ -36,13 +42,25 @@ public class hourglass extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+
+
         _timer.increment();
         topLevelGlass bigGlass = new topLevelGlass(canvas, 10, 30, 760, 1130, 0, false);
         topLevelGlass[] smallGlassTop = new topLevelGlass[24];
         topLevelGlass[] smallGlassBottom = new topLevelGlass[24];
         int n = 10;
+        boolean AM= true;
         long bottomGlasses = _timer._hour;
         long topGlasses = 24- bottomGlasses;
+        if (!this.twentyFour){
+            bottomGlasses = _timer._hour%12;
+            if (_timer._hour > 12) {
+                AM = false;
+            }
+            topGlasses = 12 - bottomGlasses;
+
+        }
+
         int counter = 0;
 
 
@@ -118,7 +136,15 @@ public class hourglass extends View {
             }
 
         }
+        _brush.setTextSize(70);
         bigGlass.render();
+        if (!twentyFour){
+            if (AM){
+                canvas.drawText("AM", 500, 600, _brush);
+            } else {
+                canvas.drawText("PM", 500, 600, _brush);
+            }
+        }
 
 
     }
