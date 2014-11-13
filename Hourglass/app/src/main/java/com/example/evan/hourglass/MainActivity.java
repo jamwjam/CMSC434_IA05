@@ -3,13 +3,19 @@ package com.example.evan.hourglass;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class MainActivity extends Activity {
-
+    private Handler _uiHandler = new Handler();
+    private Timer _timer = new Timer();
     public void buttonOnClick(View view) {
         Intent act = new Intent(view.getContext(), main_clock.class);
         startActivity(act);
@@ -19,6 +25,21 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        _timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+
+                _uiHandler.post(new Runnable(){
+                    @Override
+                    public void run(){
+                        View hourglass = findViewById(R.id.viewClockTwo);
+                        hourglass.invalidate();
+                    }
+                });
+
+            }
+        }, 0, 1000);
     }
 
     @Override

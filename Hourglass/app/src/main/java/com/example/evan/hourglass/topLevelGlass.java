@@ -14,12 +14,13 @@ public class topLevelGlass {
        this.stopX = stopX;
        this.stopY = stopY;
        this.fillState = fillState;
-       this.canvas = canvas;
-       if (isBottom) {
-           this.bottomTransform = -1;
-       } else {
-           this.bottomTransform = 1;
-       }
+        this.canvas = canvas;
+        if (isBottom) {
+            this.bottomTransform = -1;
+        } else {
+            this.bottomTransform = 1;
+        }
+
     }
     public void render(){
 
@@ -31,13 +32,15 @@ public class topLevelGlass {
             return;
         }
         int counter = 0;
-        int topSand = 10;
-        int bottomSand = 60 - topSand;
+        int bottomSand = fillState;
+        int topSand = 60 - bottomSand;
         int n = 15;
 
 
         //draw
         for (int row = 0; row < 6; row ++  ) {
+            if (counter == topSand)
+                break;
             int curYOffset = 5 * (row);
             if (row == 0)
                 n = 16;
@@ -52,21 +55,24 @@ public class topLevelGlass {
             if (row == 5)
                 n = 3;
             for (int c = 0; c < n; c ++) {
+
+                if (counter == topSand)
+                    break;
                 int curXOffset =  2 * row + 2*c + 2;
                 canvas.drawLine(startX + curXOffset+ 3, startY + bottomTransform * (curYOffset +3), startX + curXOffset + 3, startY + bottomTransform * (curYOffset+6), brush);
 
                 canvas.drawLine(startX + curXOffset + 4, startY +  bottomTransform * (curYOffset +3), startX + curXOffset + 4, startY + bottomTransform * (curYOffset+6), brush);
                 counter ++;
-                if (counter == topSand)
-                    break;
-            }
-            if (counter == topSand){
-                break;
+
             }
         }
+
+
         //paint the bottom of the top glass, will only happen for the primary glass
         counter = 0;
         for (int row = 0; row < 6; row ++  ) {
+            if (counter == bottomSand)
+                break;
             int curYOffset = 5 * (row);
             if (row == 0)
                 n = 16;
@@ -81,15 +87,18 @@ public class topLevelGlass {
             if (row == 5)
                 n = 3;
             for (int c = 0; c < n; c ++) {
-                int curXOffset =  2 * row + 2*c + 2;
-                canvas.drawLine(startX + curXOffset+ 3, stopY -  bottomTransform * (curYOffset +3), startX + curXOffset + 3, stopY - bottomTransform * (curYOffset+6), brush);
-                canvas.drawLine(startX + curXOffset+ 4, stopY -  bottomTransform * (curYOffset +3), startX + curXOffset + 4, stopY - bottomTransform * (curYOffset+6), brush);
-                counter ++;
-            if (counter == bottomSand)
-                break;
+                if (counter == bottomSand)
+                    break;
+
+
+                int curXOffset = 2 * row + 2 * c + 2;
+                canvas.drawLine(startX + curXOffset + 3, stopY - bottomTransform * (curYOffset + 3), startX + curXOffset + 3, stopY - bottomTransform * (curYOffset + 6), brush);
+                canvas.drawLine(startX + curXOffset + 4, stopY - bottomTransform * (curYOffset + 3), startX + curXOffset + 4, stopY - bottomTransform * (curYOffset + 6), brush);
+                counter++;
             }
-            if (counter == bottomSand)
-                break;
+
         }
+
+
     }
 }
