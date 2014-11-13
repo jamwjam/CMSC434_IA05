@@ -9,4 +9,7 @@
     <string name="clock_one">hh:mm:ss</string>
     <string name="navigate_clock_1">Switch to Clock #1</string>
     <string name="navigate_clock_2">Switch to Clock #2</string>
+    <string name="navigate_settings">Switch to Settings</string>
+    <string name="title_activity_settings">settings</string>
+    <string name="standard_military">12hr mode on | off</string>
 </resources>

@@ -49,8 +49,14 @@ public class main_clock extends Activity {
     }
 
     public void buttonOnClick(View view){
-        Intent act = new Intent(view.getContext(),MainActivity.class);
-        startActivity(act);
+        Intent act = null;
+        if(view.getId() == R.id.buttonSetting)
+            act = new Intent(view.getContext(), settings.class);
+        if(view.getId() == R.id.buttonClockTwo)
+            act = new Intent(view.getContext(), MainActivity.class);
+
+        if(act != null)
+            startActivity(act);
     }
 
     @Override
