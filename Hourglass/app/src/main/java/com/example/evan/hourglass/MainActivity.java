@@ -11,7 +11,7 @@ import android.view.View;
 public class MainActivity extends Activity {
 
     public void buttonOnClick(View view) {
-        Intent act = new Intent(view.getContext(),main_clock.class);
+        Intent act = new Intent(view.getContext(), main_clock.class);
         startActivity(act);
     }
 

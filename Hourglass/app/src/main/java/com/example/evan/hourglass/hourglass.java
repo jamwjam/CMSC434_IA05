@@ -16,7 +16,6 @@ public class hourglass extends View {
 
     public hourglass(Context context) {
         super(context);
-
     }
 
     public hourglass(Context context, AttributeSet attrs) {

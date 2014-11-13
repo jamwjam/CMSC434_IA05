@@ -14,13 +14,12 @@ public class topLevelGlass {
        this.stopX = stopX;
        this.stopY = stopY;
        this.fillState = fillState;
-        this.canvas = canvas;
-        if (isBottom) {
-            this.bottomTransform = -1;
-        } else {
-            this.bottomTransform = 1;
-        }
-
+       this.canvas = canvas;
+       if (isBottom) {
+           this.bottomTransform = -1;
+       } else {
+           this.bottomTransform = 1;
+       }
     }
     public void render(){
 
@@ -65,8 +64,6 @@ public class topLevelGlass {
                 break;
             }
         }
-
-
         //paint the bottom of the top glass, will only happen for the primary glass
         counter = 0;
         for (int row = 0; row < 6; row ++  ) {
