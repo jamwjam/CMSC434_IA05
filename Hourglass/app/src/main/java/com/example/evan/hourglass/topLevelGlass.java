@@ -54,7 +54,9 @@ public class topLevelGlass {
                 n = 3;
             for (int c = 0; c < n; c ++) {
                 int curXOffset =  2 * row + 2*c + 2;
-                canvas.drawLine(startX + curXOffset+ 3, startY + bottomTransform * (curYOffset +3), startX + curXOffset + 3, startY + bottomTransform * (curYOffset+4), brush);
+                canvas.drawLine(startX + curXOffset+ 3, startY + bottomTransform * (curYOffset +3), startX + curXOffset + 3, startY + bottomTransform * (curYOffset+6), brush);
+
+                canvas.drawLine(startX + curXOffset + 4, startY +  bottomTransform * (curYOffset +3), startX + curXOffset + 4, startY + bottomTransform * (curYOffset+6), brush);
                 counter ++;
                 if (counter == topSand)
                     break;
@@ -83,7 +85,8 @@ public class topLevelGlass {
                 n = 3;
             for (int c = 0; c < n; c ++) {
                 int curXOffset =  2 * row + 2*c + 2;
-                canvas.drawLine(startX + curXOffset+ 3, stopY -  bottomTransform * (curYOffset +3), startX + curXOffset + 3, stopY - bottomTransform * (curYOffset+4), brush);
+                canvas.drawLine(startX + curXOffset+ 3, stopY -  bottomTransform * (curYOffset +3), startX + curXOffset + 3, stopY - bottomTransform * (curYOffset+6), brush);
+                canvas.drawLine(startX + curXOffset+ 4, stopY -  bottomTransform * (curYOffset +3), startX + curXOffset + 4, stopY - bottomTransform * (curYOffset+6), brush);
                 counter ++;
             if (counter == bottomSand)
                 break;
