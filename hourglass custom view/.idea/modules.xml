@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hourglass custom view.iml" filepath="$PROJECT_DIR$/hourglass custom view.iml" />
       <module fileurl="file://$PROJECT_DIR$/tes3.iml" filepath="$PROJECT_DIR$/tes3.iml" />
     </modules>
   </component>
