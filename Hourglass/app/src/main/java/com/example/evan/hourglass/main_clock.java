@@ -2,6 +2,7 @@ package com.example.evan.hourglass;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -62,7 +63,11 @@ public class main_clock extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        final SharedPreferences settings = getSharedPreferences("settings", 0);
         setContentView(R.layout.activity_main_clock);
+
+        ampm = settings.getBoolean("twentyFour", true);
 
         now = new Time();
         now.setToNow();

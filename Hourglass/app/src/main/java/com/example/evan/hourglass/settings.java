@@ -18,16 +18,10 @@ public class settings extends Activity {
         SharedPreferences.Editor editMode = settings.edit();
         if(on){
             editMode.putBoolean("twentyFour", true);
-
-
         } else {
             editMode.putBoolean("twentyFour", false);
-
-
         }
         editMode.commit();
-
-
     }
 
     public void buttonOnClick(View view) {
