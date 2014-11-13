@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final SharedPreferences settings = getPreferences(0);
+        final SharedPreferences settings = getSharedPreferences("settings", 0);
 
         setContentView(R.layout.activity_main);
 
@@ -43,7 +43,6 @@ public class MainActivity extends Activity {
                 _uiHandler.post(new Runnable(){
                     @Override
                     public void run(){
-
                         hourglass h = (hourglass)findViewById(R.id.viewClockTwo);
                         h.setSettings(settings.getBoolean("twentyFour", true));
                         h.invalidate();

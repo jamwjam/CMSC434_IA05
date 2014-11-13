@@ -2,6 +2,7 @@ package com.example.evan.hourglass;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,17 +12,21 @@ import android.widget.ToggleButton;
 
 
 public class settings extends Activity {
-
+    SharedPreferences settings;
     public void switchOnClick(View view) {
         boolean on = ((Switch) view).isChecked();
-
+        SharedPreferences.Editor editMode = settings.edit();
         if(on){
-            //Switch is set to ON
-            System.out.println("on");
+            editMode.putBoolean("twentyFour", true);
+
+
         } else {
-            //Switch is set to OFF
-            System.out.println("off");
+            editMode.putBoolean("twentyFour", false);
+
+
         }
+        editMode.commit();
+
 
     }
 
@@ -41,8 +46,16 @@ public class settings extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        settings = getSharedPreferences("settings", 0);
+
+
         setContentView(R.layout.activity_settings);
+
+        boolean is12Hour = !settings.getBoolean("twentyFour", false);
+        Switch n = (Switch) findViewById(R.id.switch_timeMode);
+        n.setChecked(!is12Hour);
     }
+
 
 
     @Override
