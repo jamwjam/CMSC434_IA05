@@ -51,12 +51,16 @@ public class hourglass extends View {
         int n = 10;
         boolean AM= true;
         long bottomGlasses = _timer._hour;
+        if (bottomGlasses < 0){
+            bottomGlasses = 24 + bottomGlasses;
+        }
+        if (bottomGlasses > 12) {
+            AM = false;
+        }
         long topGlasses = 24- bottomGlasses;
         if (!this.twentyFour){
-            bottomGlasses = _timer._hour%12;
-            if (_timer._hour > 12) {
-                AM = false;
-            }
+            bottomGlasses = bottomGlasses%12;
+
             topGlasses = 12 - bottomGlasses;
 
         }
